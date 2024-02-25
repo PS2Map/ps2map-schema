@@ -1,0 +1,32 @@
+{
+    "1": {
+        "x-region": "US West"
+    },
+    "10": {
+        "x-region": "EU"
+    },
+    "13": {
+        "x-region": "EU"
+    },
+    "17": {
+        "x-region": "US East"
+    },
+    "19": {
+        "x-region": "US East"
+    },
+    "24": {
+        "x-region": "US Ease"
+    },
+    "25": {
+        "x-region": "Australia"
+    },
+    "40": {
+        "x-region": "Asia"
+    },
+    "1000": {
+        "x-region": "US"
+    },
+    "2000": {
+        "x-region": "EU"
+    }
+}

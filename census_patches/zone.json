@@ -1,0 +1,58 @@
+{
+    "2": {
+        "x-code": "Indar",
+        "x-map_size": 8192
+    },
+    "4": {
+        "x-code": "Hossin",
+        "x-map_size": 8192
+    },
+    "6": {
+        "x-code": "Amerish",
+        "x-map_size": 8192
+    },
+    "8": {
+        "x-code": "Esamir",
+        "x-map_size": 8192
+    },
+    "10": {
+        "x-code": "Nexus",
+        "x-map_size": 4196
+    },
+    "11": {
+        "x-code": "Extinction",
+        "x-map_size": 8192
+    },
+    "12": {
+        "x-code": "Desolation",
+        "x-map_size": 8192
+    },
+    "13": {
+        "x-code": "Ascension",
+        "x-map_size": 8192
+    },
+    "95": {
+        "x-code": "Tutorial",
+        "x-map_size": 1024
+    },
+    "96": {
+        "x-code": "VR",
+        "x-map_size": 2048
+    },
+    "97": {
+        "x-code": "VR",
+        "x-map_size": 2048
+    },
+    "98": {
+        "x-code": "VR",
+        "x-map_size": 2048
+    },
+    "338": {
+        "x-code": "OutfitWars",
+        "x-map_size": 8192
+    },
+    "344": {
+        "x-code": "Oshur",
+        "x-map_size": 8192
+    }
+}
