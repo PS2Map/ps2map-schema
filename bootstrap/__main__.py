@@ -19,7 +19,7 @@ async def create_schemas(conn: asyncpg.Connection) -> None:
         conn (asyncpg.Connection): The connection to the database.
 
     """
-    for schema in ('game',):
+    for schema in ('game', 'api'):
         with open(f'schemas/{schema}.sql', 'r', encoding='utf8') as file_:
             sql = file_.read()
         print(f'Creating schema \'{schema}\'...')
