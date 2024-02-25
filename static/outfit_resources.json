@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Auraxium",
+        "description": "Common"
+    },
+    {
+        "id": 2,
+        "name": "Synthium",
+        "description": "Uncommon"
+    },
+    {
+        "id": 3,
+        "name": "Polystellarite",
+        "description": "Rare"
+    }
+]
