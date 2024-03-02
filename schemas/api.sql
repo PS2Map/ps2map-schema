@@ -20,3 +20,8 @@ CREATE OR REPLACE VIEW api.lattice AS
     JOIN game.facility ftb ON l.facility_b_id = ftb.id
     JOIN game.map_region ra ON fta.id = ra.facility_id
     JOIN game.map_region rb ON ftb.id = rb.facility_id;
+
+CREATE OR REPLACE VIEW api.base_ownership AS
+    SELECT r.id AS base_id, r.zone_id AS continent_id, o.world_id AS server_id, o.owner_faction_id AS owning_faction_id, o.last_capture_time AS owned_since
+    FROM game.map_region r
+    JOIN map_state.region o ON r.id = o.id;
