@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS game.lattice_link (
     zone_id       INTEGER NOT NULL,
     facility_a_id INTEGER NOT NULL,
     facility_b_id INTEGER NOT NULL,
-    PRIMARY KEY (facility_a_id, facility_b_id),
 
+    PRIMARY KEY (facility_a_id, facility_b_id),
     FOREIGN KEY (zone_id)       REFERENCES game.zone(id),
     FOREIGN KEY (facility_a_id) REFERENCES game.facility(id),
     FOREIGN KEY (facility_b_id) REFERENCES game.facility(id)
