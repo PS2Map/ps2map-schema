@@ -1,6 +1,8 @@
+"""Controls the order in which tables are populated with data."""
+
 import re
 import typing
-import asyncpg
+import asyncpg  # type: ignore
 from .generators import game
 
 __all__ = [
@@ -38,7 +40,8 @@ async def populate_all(conn: asyncpg.Connection, service_id: str) -> None:
     await _populate('game.lattice_link', conn, data, skip_bad_fk=True)
 
 
-async def _populate(table: str, conn: asyncpg.Connection, data: list[dict[str, typing.Any]], skip_bad_fk: bool = False) -> None:
+async def _populate(table: str, conn: asyncpg.Connection,
+                    data: list[dict[str, typing.Any]], skip_bad_fk: bool = False) -> None:
     """Populate the database with the given data.
 
     Args:
@@ -65,7 +68,7 @@ async def _populate(table: str, conn: asyncpg.Connection, data: list[dict[str, t
     print(f'Populating table \'{table}\'...')
     for item in data:
         try:
-            await conn.execute(sql, *item.values())
+            await conn.execute(sql, *item.values())  # type: ignore
         except asyncpg.exceptions.UniqueViolationError:
             pass
         except asyncpg.exceptions.ForeignKeyViolationError:

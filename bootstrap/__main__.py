@@ -1,8 +1,10 @@
+"""Script for setting up the database and populating it with data."""
+
 import argparse
 import asyncio
 import os
 
-import asyncpg
+import asyncpg  # type: ignore
 
 from ._populate import populate_all
 
@@ -23,7 +25,7 @@ async def create_schemas(conn: asyncpg.Connection) -> None:
         with open(f'schemas/{schema}.sql', 'r', encoding='utf8') as file_:
             sql = file_.read()
         print(f'Creating schema \'{schema}\'...')
-        await conn.execute(sql)
+        await conn.execute(sql)  # type: ignore
     print('Schemas created')
 
 
@@ -44,12 +46,12 @@ async def async_main(db_host: str, db_port: int, db_user: str, db_pass: str,
 
     """
     # Connect to the database
-    conn = await asyncpg.connect(host=db_host, port=db_port, user=db_user,
+    conn = await asyncpg.connect(host=db_host, port=db_port, user=db_user,  # type: ignore
                                  password=db_pass, database=db_name)
     # Set up schemas
-    await create_schemas(conn)
+    await create_schemas(conn)  # type: ignore
     # Populate the database
-    await populate_all(conn, service_id)
+    await populate_all(conn, service_id)  # type: ignore
 
 
 if __name__ == '__main__':

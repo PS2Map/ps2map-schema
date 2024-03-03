@@ -1,3 +1,5 @@
+"""Helper functions for working with the Census API."""
+
 import json
 import pathlib
 import typing
@@ -13,7 +15,8 @@ _CENSUS_API_URL = 'https://census.daybreakgames.com'
 _PATCH_FILES = pathlib.Path(__file__).parents[2] / 'census_patches'
 
 
-async def get_census_data(collection: str, service_id: str, game: str | None = None) -> list[dict[str, typing.Any]]:
+async def get_census_data(collection: str, service_id: str,
+                          game: str | None = None) -> list[dict[str, typing.Any]]:
     """Retrieve raw data from the Census API.
     
     Args:
@@ -39,7 +42,8 @@ async def get_census_data(collection: str, service_id: str, game: str | None = N
     return patch_census_data(collection, raw_census)
 
 
-def patch_census_data(collection: str, raw_data: list[dict[str, typing.Any]]) -> list[dict[str, typing.Any]]:
+def patch_census_data(collection: str,
+                      raw_data: list[dict[str, typing.Any]]) -> list[dict[str, typing.Any]]:
     """Patch the raw data from the Census API.
 
     Some collections are outdated or miss data which is brought in

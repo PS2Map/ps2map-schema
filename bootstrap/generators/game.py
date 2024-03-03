@@ -1,4 +1,5 @@
-import json
+"""Generators for the 'game' schema."""
+
 import typing
 
 from ._census_helpers import get_census_data
@@ -17,6 +18,7 @@ __all__ = [
 
 
 async def generate_factions(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate faction data from the Census API."""
     census = await get_census_data('faction', service_id)
     return [{
         'id': int(d['faction_id']),
@@ -26,6 +28,7 @@ async def generate_factions(service_id: str) -> list[dict[str, typing.Any]]:
 
 
 async def generate_worlds(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate world data from the Census API."""
     data: list[dict[str, typing.Any]] = []
     for game in ('ps2:v2', 'ps2ps4us:v2', 'ps2ps4eu:v2'):
         platform = 'ps4' if 'ps4' in game else 'pc'
@@ -40,6 +43,7 @@ async def generate_worlds(service_id: str) -> list[dict[str, typing.Any]]:
 
 
 async def generate_zones(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate zone data from the Census API."""
     census = await get_census_data('zone', service_id)
     return [{
         'id': int(d['zone_id']),
@@ -54,10 +58,12 @@ async def generate_zones(service_id: str) -> list[dict[str, typing.Any]]:
 
 
 def generate_outfit_resources() -> list[dict[str, typing.Any]]:
+    """Generate outfit resource data from in-repo data."""
     return get_static_data('outfit_resources')
 
 
 async def generate_facility_types(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate facility type data from the Census API."""
     census = await get_census_data('map_region', service_id)
     return [{
         'id': int(d['facility_type_id']),
@@ -66,6 +72,7 @@ async def generate_facility_types(service_id: str) -> list[dict[str, typing.Any]
 
 
 async def generate_facility(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate facility data from the Census API."""
     # Map used to connect custom resource IDs to facilities
     resource_map = {d['id']: d['name'] for d in get_static_data('outfit_resources')}
 
@@ -90,6 +97,7 @@ async def generate_facility(service_id: str) -> list[dict[str, typing.Any]]:
 
 
 async def generate_map_region(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate map region data from the Census API."""
     census = await get_census_data('map_region', service_id)
     return [{
         'id': int(d['map_region_id']),
@@ -102,6 +110,7 @@ async def generate_map_region(service_id: str) -> list[dict[str, typing.Any]]:
 
 
 async def generate_lattice_links(service_id: str) -> list[dict[str, typing.Any]]:
+    """Generate lattice link data from the Census API."""
     census_data = await get_census_data('facility_link', service_id)
     return [{
         'facility_a_id': int(d['facility_id_a']),
