@@ -1,3 +1,4 @@
+import re
 import typing
 import asyncpg
 from .generators import game
@@ -5,6 +6,9 @@ from .generators import game
 __all__ = [
     'populate_all',
 ]
+
+_REGEX_VALID_IDENTIFIER = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*\.?[A-Za-z0-9_]+$')
+
 
 async def populate_all(conn: asyncpg.Connection, service_id: str) -> None:
     """Populate the database with all available data.
@@ -44,15 +48,24 @@ async def _populate(table: str, conn: asyncpg.Connection, data: list[dict[str, t
         skip_bad_fk (bool): Whether to skip rows with FK errors.
 
     """
+    # NOTE (leonhard-s): Because we need to parametrize the table and columns, we cannot use the
+    # standard query parameterization features. Instead, we verify that the table and column names
+    # are valid and then use string interpolation to build the SQL query with placeholders.
+
+    if not _REGEX_VALID_IDENTIFIER.match(table):
+        raise ValueError(f'Invalid table name: {table}')
+    columns = data[0].keys()
+    if not all(_REGEX_VALID_IDENTIFIER.match(column) for column in columns):
+        raise ValueError(f'Invalid column name in table {table}')
+
+    columns = ', '.join(columns)
+    placeholders = ', '.join((f'${i+1}' for i, _ in enumerate(data[0])))
+    sql = f'INSERT INTO {table} ({columns}) VALUES ({placeholders})'
+
     print(f'Populating table \'{table}\'...')
-    columns = ''
-    placeholders = ''
-    for index, item in enumerate(data):
-        if index == 0:
-            columns = ', '.join(item.keys())
-            placeholders = ', '.join([f'${i+1}' for i in range(len(item))])
+    for item in data:
         try:
-            await conn.execute(f'INSERT INTO {table} ({columns}) VALUES ({placeholders})', *item.values())
+            await conn.execute(sql, *item.values())
         except asyncpg.exceptions.UniqueViolationError:
             pass
         except asyncpg.exceptions.ForeignKeyViolationError:
