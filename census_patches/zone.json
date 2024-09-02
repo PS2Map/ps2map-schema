@@ -1,58 +1,58 @@
 {
     "2": {
-        "x-code": "Indar",
+        "x-code": "indar",
         "x-map_size": 8192
     },
     "4": {
-        "x-code": "Hossin",
+        "x-code": "hossin",
         "x-map_size": 8192
     },
     "6": {
-        "x-code": "Amerish",
+        "x-code": "amerish",
         "x-map_size": 8192
     },
     "8": {
-        "x-code": "Esamir",
+        "x-code": "esamir",
         "x-map_size": 8192
     },
     "10": {
-        "x-code": "Nexus",
+        "x-code": "nexus",
         "x-map_size": 4196
     },
     "11": {
-        "x-code": "Extinction",
+        "x-code": "extinction",
         "x-map_size": 8192
     },
     "12": {
-        "x-code": "Desolation",
+        "x-code": "desolation",
         "x-map_size": 8192
     },
     "13": {
-        "x-code": "Ascension",
+        "x-code": "ascension",
         "x-map_size": 8192
     },
     "95": {
-        "x-code": "Tutorial",
+        "x-code": "tutorial",
         "x-map_size": 1024
     },
     "96": {
-        "x-code": "VR",
+        "x-code": "vr",
         "x-map_size": 2048
     },
     "97": {
-        "x-code": "VR",
+        "x-code": "vr",
         "x-map_size": 2048
     },
     "98": {
-        "x-code": "VR",
+        "x-code": "vr",
         "x-map_size": 2048
     },
     "338": {
-        "x-code": "OutfitWars",
+        "x-code": "outfitwars",
         "x-map_size": 8192
     },
     "344": {
-        "x-code": "Oshur",
+        "x-code": "oshur",
         "x-map_size": 8192
     }
 }
